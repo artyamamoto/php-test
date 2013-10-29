@@ -1,17 +1,18 @@
 <?php
+/*
+ * - クロージャ内部から $this にアクセスできます。
+ */
+
 class Sample {
+    public $people = array("ほげお","かずお","ゆきお","よしお","ひさお","ジョン");
 	public function test() {
-		$i = 0;	
-		
-		print_r(array_map(function($n) use(&$i) {
-			printf( "%d : lambda in %s\n", (++$i) , get_class($this));
-			return ($n * $n * $n);
-		}, [1,2,3,4,5]));
+		print_r(array_map(function($i) {
+			return $this->people[$i++];
+		}, [0,2,4]));
 	}
 }
 
 echo '<pre>';
-$Sample = new Sample();
-$Sample->test();
+(new Sample())->test();
 echo '</pre>';
 ?>

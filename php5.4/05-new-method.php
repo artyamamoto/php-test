@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * new で生成したインスタンスのメソッドを (new Class())->hoge() という形で呼び出せます。
+ */
 class Database {
 	function init() {
 		echo __METHOD__," called\n";
