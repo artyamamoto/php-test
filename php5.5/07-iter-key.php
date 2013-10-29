@@ -1,5 +1,9 @@
 <?php
-
+/*
+ * foreachの key に配列を受けることができます。
+ * （但し、list()関数で受け取るとエラーになります）
+ * 但し、Iteratorインターフェースを実装したクラス限定です。（定義する方法がないため）
+ */
 class Sample implements Iterator {
 	private $list = array();
 	public function __construct($list) {
@@ -9,11 +13,16 @@ class Sample implements Iterator {
 		reset($this->list);
 	}
 	public function current() {
-		return current($this->list);
+		// return current($this->list);
+        $v = current($this->list);
+        $ed = $v + 3;
+        return range($v,$ed);
 	}
 	public function key() {
-		// return key($this->list);
-		return range(0, current($this->list));
+		// return key($this->list); // キーのスカラー値を返す場合はこちら
+        $v = current($this->list);
+        $st = $v - 3;
+		return range($st,$v);
 	}
 	public function next() {
 		return next($this->list);
@@ -24,16 +33,15 @@ class Sample implements Iterator {
 	}
 }
 
-$i = new Sample([1,2,3,4,5]);
-echo "<pre>";
+$i = new Sample(range(10,20));
+
+echo '<h4>Iteratorのサブクラスでkeyを配列にする</h4>';
+echo "<ul>";
 foreach($i as $key => $value) {
-	echo "<table border='1'><tr>";
-	echo "<th>\t\tkey : ";
-	var_dump($key);
-	echo "</th><td>";
-	echo "\t\tvalue";
-	var_dump($value);
-	echo "</td></table>";
+    printf("<li>%s => %s</li>",
+        join(",",$key),
+        join(",",$value));
 }
-echo "</pre>";
+echo "</ul>";
+
 ?>
