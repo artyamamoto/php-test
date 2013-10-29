@@ -42,6 +42,9 @@
             vertical-align:		top;
             text-align: left;
         }
+        .errmsg {
+            color:      #f00;
+        }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>
@@ -60,6 +63,15 @@
             f();
             $(window).bind("resize",f);
         });
+    </script>
+
+    <link type="text/css" rel="stylesheet" href="syntaxhighlighter_3.0.83/styles/shCore.css"/>
+    <!--<link type="text/css" rel="stylesheet" href="syntaxhighlighter_3.0.83/styles/shThemeDefault.css"/>-->
+    <link type="text/css" rel="stylesheet" href="syntaxhighlighter_3.0.83/styles/shThemeDefault.css"/>
+    <script type="text/javascript" src="syntaxhighlighter_3.0.83/scripts/shCore.js"></script>
+    <script type="text/javascript" src="syntaxhighlighter_3.0.83/scripts/shBrushPhp.js"></script>
+    <script>
+        SyntaxHighlighter.all();
     </script>
 </head>
 <body>
@@ -87,7 +99,9 @@ function pr($s) {
 	<tr><td style="width: 50%;">
 		<h2>Source</h2>
 		<div class="source">
-			<? highlight_file($source);  ?>
+			<pre class="brush: php;"><? // highlight_file($source);
+                echo htmlspecialchars(file_get_contents($source),ENT_QUOTES);
+            ?></pre>
 		</div>
 	</td><td style="width: 50%;">
 		<h2>Result</h2>
