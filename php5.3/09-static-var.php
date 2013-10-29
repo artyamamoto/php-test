@@ -2,8 +2,9 @@
 class Sample {
 	public static $foo = "bar";
 }
-$class = "Sample";
+$classname = "Sample";
 
-echo $class::$foo;
+// クラス名を文字列にしてstatic変数にアクセスできます。
+echo $classname::$foo;
 
 ?>
