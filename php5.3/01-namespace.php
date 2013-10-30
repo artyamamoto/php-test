@@ -1,7 +1,9 @@
 <?php
 // namespaceを定義する場合、その前に命令文を書くことはできませんが、
 // declare()は例外的にnamespaceの前に書くことができます。
-declare(encoding='UTF-8');
+
+// PHP5.3ではdeclare encodingするにはコンパイル時に --enable-zend-multibyte が必要です。
+// declare(encoding='UTF-8');
 
 // app\Test1 ----------------------------
 /**
@@ -37,30 +39,27 @@ class Main extends \app\Test1\Main {
 }
 // main ----------------------------
 namespace main;
-$nslist = array(
-	"\\app\\Test1" ,
-	"\\app\\Test2" ,
-);
-foreach($nslist as $ns) :
-    $cls = $ns."\\Main";
-    $const = $ns."\\DEF";
 ?>
-    <h3><?= $cls ?>クラス</h3>
+<!-- \app\Test1\Main -->
+<h3>\app\Test1\Mainクラス</h3>
 
-    <h4>クラスの生成、dump</h4>
-    <pre><?
-        $i = new $cls();
-
-        var_dump($i);
+<h4>クラスの生成、dump</h4>
+<pre><?
+    $i = new \app\Test1\Main();
+    var_dump($i);
     ?></pre>
 
-    <h4><?= $ns ?>\DEF 定数</h4>
-    <pre><?= constant($const); ?></pre>
-<?php
-endforeach;
+<h4>\app\Test1\DEF</h4>
+<pre><?= \app\Test1\DEF ?></pre>
 
-//echo "\\app\\Test1\\WESTPHALIA : ",\app\Test1\WESTPHALIA,"<br />";
-//echo "\\app\\Test2\\WESTPHALIA : ",\app\Test2\WESTPHALIA,"<br />";
+<!-- \app\Test2\Main -->
+<h3>\app\Test2\Mainクラス</h3>
 
+<h4>クラスの生成、dump</h4>
+<pre><?
+    $i = new \app\Test2\Main();
+    var_dump($i);
+    ?></pre>
 
-?>
+<h4>\app\Test2\DEF</h4>
+<pre><?= \app\Test2\DEF ?></pre>
