@@ -1,3 +1,7 @@
+<?php
+// ヘッダーが出力できるように
+ob_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
