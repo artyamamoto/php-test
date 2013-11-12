@@ -17,12 +17,17 @@ function test($throwException=false,$goto=false,$return=false,$fatal_error=false
         if ($return)
             return;
         if ($fatal_error) {
-            file_put_contents("/tmp/kazuo", 1);
             unknown_func();
         }
     } catch(Exception $e) {
         echo "[Exception] \n";
     } finally {
+        // fatal error時にはfinallyが実行されないが、
+        // 一応、ファイル出力にて確認する。（標準出力が死んでいるだけかもしれないため、、）
+        if ($fatal_error) {
+            file_put_contents("/tmp/kazuo", "your life encountered a fatal error");
+            @chmod("/tmp/kazuo", 0777);
+        }
         echo "[Finally] \n";
     }
     return;
@@ -42,8 +47,7 @@ test(false, true);
 echo '<h4>try中でreturn文が実行されてもfinallyは実行される</h4>';
 test(false, false,true);
 
-echo '<h4>try中でFatal Errorになった時でさえfinallyは実行されるが、<br />'.
-         'Fatal Error時に標準出力が死ぬのでstdoutから確認することはできない。</h4>';
+echo '<h4>try中でFatal Errorになった時はfanallyは実行されないようだ。</h4>';
 test(false, false,false,true);
 
 echo "</pre>";

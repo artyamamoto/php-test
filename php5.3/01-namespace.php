@@ -8,7 +8,6 @@
 // app\Test1 ----------------------------
 /**
  * class \app\Test1\Main
- * const \app\Test1\WESTPHALIA
  */
 namespace app\Test1;
 
@@ -21,7 +20,6 @@ class Main {
 // app\Test2 ----------------------------
 /**
  * class \app\Test2\Main
- * const \app\Test2\WESTPHALIA
  * use \app\Test1
  *
  * ※\app\Test1\Mainを絶対パスで指定しているため、
@@ -40,7 +38,7 @@ class Main extends \app\Test1\Main {
 // main ----------------------------
 namespace main;
 ?>
-<!-- \app\Test1\Main -->
+<? // \app\Test1\Main ?>
 <h3>\app\Test1\Mainクラス</h3>
 
 <h4>クラスの生成、dump</h4>
@@ -52,7 +50,7 @@ namespace main;
 <h4>\app\Test1\DEF</h4>
 <pre><?= \app\Test1\DEF ?></pre>
 
-<!-- \app\Test2\Main -->
+<? // \app\Test2\Main ?>
 <h3>\app\Test2\Mainクラス</h3>
 
 <h4>クラスの生成、dump</h4>

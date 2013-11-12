@@ -16,5 +16,7 @@ class Jekyll implements JsonSerializable {
     }
 }
 
-print_r(json_decode(json_encode(new Jekyll())));
+$jekyll = new Jekyll();
+var_dump($jekyll);
+var_dump(json_encode(new Jekyll()));
 ?>

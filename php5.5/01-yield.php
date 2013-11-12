@@ -14,15 +14,15 @@ class MyFile {
 
         if (!($this->fp = fopen($this->path,"r"))) {
             @fclose($this->fp);
-            $this->fp;
+            $this->fp = null;
             throw new Exception("failed to open $path");
         }
 
     }
     public function fetch() {
-        while(($line = fgets($this->fp)) !== false) {
-            yield $line;
-        }
+        $linenum = 0;
+        while(($line = fgets($this->fp)) !== false)
+            yield ++$linenum => $line;
     }
     public function __destruct() {
         if ($this->fp) {
@@ -33,7 +33,7 @@ class MyFile {
 }
 echo "<pre>";
 foreach((new MyFile(__FILE__))->fetch() as $i => $line) {
-    printf("[%d] %s\n", $i, htmlspecialchars($line,ENT_QUOTES));
+    printf("[%d] %s", $i, htmlspecialchars($line,ENT_QUOTES));
 }
 echo "</pre>";
 

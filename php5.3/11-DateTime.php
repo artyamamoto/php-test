@@ -1,4 +1,7 @@
 <?php
+/**
+ * 5.3で DateIntervalクラスが追加されました。
+ */
 date_default_timezone_set("Asia/Tokyo");
 echo '<table border="1">';
 

@@ -1,18 +1,16 @@
 <?php
-/* php5.4 から利用できるようになったbuiltin-server は以下のように設定します。
+/**
+ * php5.4 から利用できるようになったbuiltin-server は以下のように設定します。
+ * コマンドを実行したパスがドキュメントルートになります。
  *
- * // 最低限の起動は以下のようになります。
- * // コマンドを実行したパスがドキュメントルートになります。
+ * $ php -S localhost:8000
+ * $ php -S localhost:8000 -t [ドキュメントルート] -c [php.iniのパス]
  *
- * php -S localhost:8000
+ * 引数にphpファイルを指定することで、レスポンスを調整できます。
+ * mode_rewrite のような使い方が可能です。
+ * （以下はこのファイルを指定しての起動）
  *
- * // オプション等
- * php -S localhost:8000 -t [ドキュメントルート] -c [php.iniのパス]
- *
- * // mod_rewrite的なことをする場合
- * php -S localhost:8000 router.php
- *
- * router.php の内容はこのスクリプトを参照のこと
+ * $ php -S localhost:8000 99-builtin-server.php
  */
 
 // .html => .php
