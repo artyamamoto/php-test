@@ -1,9 +1,22 @@
 <?php
 
+
+
 goto KingCrimson;
 echo "原因";
 
 KingCrimson:
-echo "『結果』だけだ！！この世には『結果』だけ残る！！\n";
+echo "結果\n";
 
+
+/*
+ * goto文によって遷移できるラベルは同一スコープ内に限られますので、
+ * 以下のクラスの Diavolo->suicide()を呼び出すとエラーになります。
+ *
+class Diavolo {
+    public function suicide() {
+        goto KingCrimson;
+    }
+}
+*/
 
