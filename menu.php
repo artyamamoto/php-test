@@ -38,7 +38,7 @@ function pr($s) {
 	sort($versions);
 ?>
 	<ul>
-        <li><a href="info.php">phpinfo</a></li>
+        <li><a href="info.php" target="_blank">phpinfo</a></li>
 	<? foreach($versions as $php) : 
 			$list = glob("$php/*.php");
 			sort($list);
