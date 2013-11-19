@@ -25,7 +25,7 @@
 </head>
 <body>
 	<input type="button" value="メニュー再読み込み" onclick="location.reload();" />
-	<p>your php version is <?= phpversion() ?></p>
+    <p>your php version is <?= phpversion() ?></p>
 <?php
 function h($s) {
 	return htmlspecialchars($s, ENT_QUOTES);
@@ -38,6 +38,7 @@ function pr($s) {
 	sort($versions);
 ?>
 	<ul>
+        <li><a href="info.php">phpinfo</a></li>
 	<? foreach($versions as $php) : 
 			$list = glob("$php/*.php");
 			sort($list);
