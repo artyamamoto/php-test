@@ -1,12 +1,10 @@
 <?php
 
-
-
 goto KingCrimson;
 echo "原因";
 
 KingCrimson:
-echo "結果\n";
+echo "キングクリムゾン！\n";
 
 
 /*

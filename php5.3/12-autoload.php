@@ -28,7 +28,8 @@ echo '<pre>';
 echo '<h4>\\Test1\\MyClassクラスのインスタンスを生成 -> Test1/MyClass.phpの読み込み</h4>';
 $cls = new \Test1\MyClass();
 
-echo '<h4>\\Test1\\UnknownClassクラスのインスタンスを生成 -> Test1/UnknownClass.phpが存在しないため、例外</h4>';
+echo '<h4>\\Test1\\UnknownClassクラスのインスタンスを生成 -> '.
+        'Test1/UnknownClass.phpが存在しないため、例外</h4>';
 try {
     $cls = new \Test1\UnknownClass();
 } catch(\Exception $e) {

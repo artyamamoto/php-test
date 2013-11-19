@@ -45,7 +45,7 @@ echo '<h4>try中でGoto文が実行されてもfinallyは実行される</h4>';
 test(false, true);
 
 echo '<h4>try中でreturn文が実行されてもfinallyは実行される</h4>';
-test(false, false,true);
+test(false, false, true);
 
 echo '<h4>try中でFatal Errorになった時はfanallyは実行されないようだ。</h4>';
 test(false, false,false,true);
